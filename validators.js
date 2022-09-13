@@ -10,7 +10,7 @@ const userSchema = Joi.object({
 
 const validateUser = (req, res, next) => {
   const { firstname, lastname, email, city, language } = req.body;
-  
+
   const { error } = userSchema.validate(
     { firstname, lastname, email, city, language },
     { abortEarly: false }
@@ -26,17 +26,17 @@ const validateUser = (req, res, next) => {
 const movieSchema = Joi.object({
   title: Joi.string().max(255).required(),
   director: Joi.string().max(255).required(),
-  year:Joi.string().max(255).required(),
+  year: Joi.string().max(255).required(),
   color: Joi.string().max(255).required(),
-  duration:Joi.number().integer().required()
-})
- 
+  duration: Joi.number().integer().required(),
+});
+
 const validateMovie = (req, res, next) => {
   const { title, director, year, color, duration } = req.body;
-  
-  const {error} = movieSchema.validate(
+
+  const { error } = movieSchema.validate(
     { title, director, year, color, duration },
-    {abortEarly: false}
+    { abortEarly: false }
   );
 
   if (error) {
